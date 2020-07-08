@@ -1,0 +1,8 @@
+select menu from dropbox : selecting the language.
+text description : description of what to be done further.
+buttons : a word displayed within ever button.
+clicking button : on clicking the button , the list of words is reduced and the clicked word is formed as a new sentence in next line.
+check_the_correct_answer : a button is provided to check the correct answer.
+reform sentence : a button is provided to reform the sentence,if it is not correct.
+show_the_correct_answer : if the buttons selected are incorrect then ,this can help.
+ 
