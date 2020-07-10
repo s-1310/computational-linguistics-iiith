@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>experiment</title>
+    <script type="text/javascript" src="sentences.js"></script>
+</head>
+    <body>
+        <div id="languageSelector" style="text-align: center; padding: 20px; align-content: center;">
+            <select name="language" id="language" onchange="displayWords()">
+                <option value=null>--select--</option>
+                <option value="english">English</option>
+                <option value="hindi">Hindi</option>
+            </select>
+        </div>
+        <div id="wordsContainer" style="text-align: center; padding: 20px; display: none; align-content: center;">
+            <p><strong>
+                Form a  sentence (Declarative or Interrogative or any other type) from the given words
+            </strong></p>
+            <p>
+                <i>(select the buttons in proper order)</i>
+            </p>
+            <div id="words" style="text-align: center; align-content: center;">
+                <p><b></b></p>
+            </div>
+        </div>
+    </body>    
+</html>

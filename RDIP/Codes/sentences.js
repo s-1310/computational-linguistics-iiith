@@ -1,4 +1,4 @@
-var sentences={
+var sentences = {
     'English' :[
         {
             'a': 'John ate an apple before afternoon',
@@ -118,3 +118,52 @@ var sentences={
         }
     ]
 }
+let shuffle = (array)=>{
+    for(let i = array.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * i)
+        const temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+    }
+    console.log(array);
+    return array
+}
+
+let displayWords = () => {
+    var words
+    var language = document.getElementById('language').value
+    console.log(Math.floor(Math.random() * 10));
+    switch(language){
+        case 'english':
+            var n = Math.floor(Math.random() * 10)
+            words = sentences.English[n].a.split(' ')
+            words = shuffle(words)
+            break;
+        case 'hindi':
+            var n = Math.floor(Math.random() * 7)
+            words = sentences.Hindi[n].a.split(' ')
+            console.log(words)
+            words = shuffle(words)
+            break;
+        default:
+            alert('select a language English/Hindi')
+    }
+    let div = document.getElementById('words')
+
+    let buttons = words.map((word,id)=>{
+        let button = document.createElement('button')
+        button.value = word
+        button.id = id
+        button.innerHTML = word
+        button.style.padding = '10px'
+        button.style.margin = '10px'
+        div.append(button)
+        return button
+    });
+
+    document.getElementById('wordsContainer').style.display = 'block'
+    // // console.log(div);
+    // document.getElementById('words').innerHTML=div
+}
+
+sentences.English[3].a.split(' ')
