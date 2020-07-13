@@ -118,6 +118,7 @@ var sentences = {
         }
     ]
 }
+let buttons = {}
 let shuffle = (array)=>{
     for(let i = array.length - 1; i > 0; i--){
         const j = Math.floor(Math.random() * i)
@@ -135,14 +136,13 @@ let displayWords = () => {
     console.log(Math.floor(Math.random() * 10));
     switch(language){
         case 'english':
-            var n = Math.floor(Math.random() * 10)
+            let n = Math.floor(Math.random() * 10)
             words = sentences.English[n].a.split(' ')
             words = shuffle(words)
             break;
         case 'hindi':
-            var n = Math.floor(Math.random() * 7)
+            n = Math.floor(Math.random() * 7)
             words = sentences.Hindi[n].a.split(' ')
-            console.log(words)
             words = shuffle(words)
             break;
         default:
@@ -150,10 +150,12 @@ let displayWords = () => {
     }
     let div = document.getElementById('words')
 
-    let buttons = words.map((word,id)=>{
+    buttons = words.map((word,id)=>{
         let button = document.createElement('button')
+        button.addEventListener('click', ()=>{removeButton(button.id)})
         button.value = word
         button.id = id
+        button.style.display='inline'
         button.innerHTML = word
         button.style.padding = '10px'
         button.style.margin = '10px'
@@ -161,9 +163,32 @@ let displayWords = () => {
         return button
     });
 
+    console.log(buttons);    
+
     document.getElementById('wordsContainer').style.display = 'block'
     // // console.log(div);
     // document.getElementById('words').innerHTML=div
 }
+let res = ''
+function removeButton(id){
+    let btn = document.getElementById(id)
+    let s = btn.value
+    res+=s+' '
+    // console.log(res);
+    btn.style.display = 'none'
+    document.getElementById('res').innerHTML=res
+    document.getElementById('selected').style.display = 'block'
+    document.getElementById('reset').style.display='block'
 
-sentences.English[3].a.split(' ')
+}
+
+function reformSentence(){
+    res = ''
+    document.getElementById('res').innerHTML = ''
+    buttons.map((button,id) => {
+        button.style.display = 'inline'
+    })
+    document.getElementById('selected').style.display = 'none'
+    document.getElementById('reset').style.display='none'
+}
+
