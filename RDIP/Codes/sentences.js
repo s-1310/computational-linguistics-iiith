@@ -170,6 +170,7 @@ let displayWords = () => {
     // document.getElementById('words').innerHTML=div
 }
 let res = ''
+let c = 0
 function removeButton(id){
     let btn = document.getElementById(id)
     let s = btn.value
@@ -179,7 +180,10 @@ function removeButton(id){
     document.getElementById('res').innerHTML=res
     document.getElementById('selected').style.display = 'block'
     document.getElementById('reset').style.display='block'
-
+    c+=1
+    if( c === buttons.length){
+        document.getElementById('correctness').style.display = 'block'
+    }
 }
 
 function reformSentence(){
