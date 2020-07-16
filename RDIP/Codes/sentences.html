@@ -7,14 +7,14 @@
     <script type="text/javascript" src="sentences.js"></script>
 </head>
     <body>
-        <div id="languageSelector" style="text-align: center; padding: 20px; align-content: center;">
+        <div id="languageSelector" style="text-align: center; padding: 10px; align-content: center;">
             <select name="language" id="language" onchange="displayWords()">
                 <option value=null>--select--</option>
                 <option value="english">English</option>
                 <option value="hindi">Hindi</option>
             </select>
         </div>
-        <div id="wordsContainer" style="text-align: center; padding: 20px; display: none; align-content: center;">
+        <div id="wordsContainer" style="text-align: center; padding: 10px; display: none; align-content: center;">
             <p><strong>
                 Form a  sentence (Declarative or Interrogative or any other type) from the given words
             </strong></p>
@@ -25,17 +25,22 @@
                 <p><b></b></p>
             </div>
         </div>
-        <div id="selected" style="display: none;text-align: center; padding: 20px;">
+        <div id="selected" style="display: none;text-align: center; padding: 10px;">
             <p> <strong> Formed Sentence </strong> (<i>after selecting words</i>):</p>
             <p id="res" style="font-family: 'Courier New', Courier, monospace; font-size: xx-large; font-weight: 600;"></p>
-            <div id="reset" style="text-align: center; padding: 20px; display: none; align-content: center;">
+            <div id="reset" style="text-align: center; padding: 10px; display: none; align-content: center;">
                 <button onclick="reformSentence()">Re-form the sentence</button>
             </div>
         </div>
-        <div>
-            <div id="correctness" style="display: none;text-align: center; padding: 10px;">
-               <button onclick="checkSentence()">Check the correctness of this sentence</button>
-            </div>
+        
+        <div id="correctness" style="display: none;text-align: center; padding: 10px;">
+            <button onclick="checkSentence()">Check the correctness of this sentence</button>
+            <p id="displayresult"></p>
+        </div>
+        
+        <div id="getcorrectanswers" style="display: none;text-align: center; padding: 10px;">
+            <button id="getanswers" onclick="displayanswers()">Get correct answers</button>
+            <br>
         </div>
     </body>    
 </html>

@@ -1,4 +1,4 @@
-var sentences = {
+let sentences = {
     'English' :[
         {
             'a': 'John ate an apple before afternoon',
@@ -119,6 +119,7 @@ var sentences = {
     ]
 }
 let buttons = {}
+let n=0
 let shuffle = (array)=>{
     for(let i = array.length - 1; i > 0; i--){
         const j = Math.floor(Math.random() * i)
@@ -136,7 +137,7 @@ let displayWords = () => {
     console.log(Math.floor(Math.random() * 10));
     switch(language){
         case 'english':
-            let n = Math.floor(Math.random() * 10)
+            n = Math.floor(Math.random() * 10)
             words = sentences.English[n].a.split(' ')
             words = shuffle(words)
             break;
@@ -194,5 +195,55 @@ function reformSentence(){
     })
     document.getElementById('selected').style.display = 'none'
     document.getElementById('reset').style.display='none'
+    document.getElementById('correctness').style.display='none'
+}
+let check = ''
+function checkSentence(){
+    var lang = document.getElementById('language').value
+    // console.log(lang);
+    
+    let correct = false;
+    switch (lang) {
+        case 'english':
+            check = sentences.English[n]
+            break;
+        case 'hindi':
+            check = sentences.Hindi[n]
+            break;
+        default:
+            break;
+    }
+    console.log(res.length);
+    res = res.split(' ').join('')
+    console.log(res);
+    for( const keys in check){
+        let s = check[keys].split(' ').join('')
+        if (s === res){
+            correct = true;
+            break;
+        }
+    }
+    if(correct){
+        document.getElementById('displayresult').innerHTML = 'Right Answer!!!'
+        document.getElementById('displayresult').style.color = 'green'
+        document.getElementById('displayresult').style.fontSize = '40px'
+    }
+    else{
+        document.getElementById('displayresult').innerHTML = 'Wrong Answer!!!'
+        document.getElementById('displayresult').style.color = 'red'
+        document.getElementById('displayresult').style.fontSize = '40px'
+        document.getElementById('getcorrectanswers').style.display = 'block'
+    }
 }
 
+function displayanswers() {
+    console.log(document.getElementById('getanswers').innerHTML)
+    let p = ''
+    for( const keys in check){
+        var div = document.getElementById('getcorrectanswers')
+        p = document.createElement('p')
+        p.innerHTML = check[keys]
+        div.append(p)
+    }
+    
+}
