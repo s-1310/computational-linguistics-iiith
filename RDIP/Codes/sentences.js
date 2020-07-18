@@ -189,13 +189,18 @@ function removeButton(id){
 
 function reformSentence(){
     res = ''
+    c = 0
     document.getElementById('res').innerHTML = ''
+    document.getElementById('displayresult').innerHTML = ''
     buttons.map((button,id) => {
         button.style.display = 'inline'
     })
     document.getElementById('selected').style.display = 'none'
     document.getElementById('reset').style.display='none'
     document.getElementById('correctness').style.display='none'
+    document.getElementById('ansbtn').style.display = 'none'
+    document.getElementById('getcorrectanswers').style.display = 'none'
+
 }
 let check = ''
 function checkSentence(){
@@ -232,12 +237,13 @@ function checkSentence(){
         document.getElementById('displayresult').innerHTML = 'Wrong Answer!!!'
         document.getElementById('displayresult').style.color = 'red'
         document.getElementById('displayresult').style.fontSize = '40px'
-        document.getElementById('getcorrectanswers').style.display = 'block'
+        document.getElementById('ansbtn').style.display = 'block'
+        
     }
 }
 
 function displayanswers() {
-    console.log(document.getElementById('getanswers').innerHTML)
+    
     let p = ''
     for( const keys in check){
         var div = document.getElementById('getcorrectanswers')
@@ -245,5 +251,19 @@ function displayanswers() {
         p.innerHTML = check[keys]
         div.append(p)
     }
+    var b = document.getElementById('getanswers')
+    b.removeEventListener('click', ()=>{displayanswers()})
+    b.addEventListener('click', ()=>{hideanswers()})
+    b.innerHTML = 'hide answers'
+    document.getElementById('getcorrectanswers').style.display = 'block'
+}
+
+function hideanswers(){
+    var b = document.getElementById('getanswers')
+    b.removeEventListener('click', ()=>{hideanswers()})
+    b.addEventListener('click', ()=>{displayanswers()})
+    b.innerHTML = 'Get correct answers'
+    document.getElementById('getcorrectanswers').innerHTML = ''
+    document.getElementById('getcorrectanswers').style.display = 'none'
     
 }
